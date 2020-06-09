@@ -96,17 +96,15 @@
 		 * @param  {Object} monsterId The monster to render
 		 */
 		//Variable for the array of stories
-		var openDoor = function () {
+		var openDoor = function (e) {
 			//Map array of Monster to an object element with grid classes
 			// app.innerHTML += '<object id="' + doorWay.value +
 			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
 			// 	'.svg" alt="Monster picture"><img src="images/door.svg" alt="Door to open"' + '</object>';
-			// Get the first element with the [data-snack] attribute
-			//var customerId = $(this).closest("object[data]").attr('data');
-			// console.log(doorWay);
+
 			//Identify the grid class object
-			//var clickMonster = e.target;
-			var showMonster = e.closest('object');
+
+			//var showMonster = e.closest('object');
 			console.log(e);
 		}
 
