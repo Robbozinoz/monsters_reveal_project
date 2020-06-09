@@ -59,6 +59,9 @@
 	</footer>
 
 	<script>
+		var doorWay = document.getElementsByClassName("grid");
+		//var doorWay = document.getElementsByClassName("doorImage");
+
 		// Get the #app element
 		var app = document.querySelector('#app');
 
@@ -83,10 +86,29 @@
 		 * @param  {Object} monsterId The monster to render
 		 */
 		//Variable for the array of stories
-		var render = function (monsterId) {
+		var gameStart = function (monsterId) {
 			//Map array of Monster to an object element with grid classes
-			app.innerHTML += '<object class="grid" type="image/svg+xml" data="images/' + monsterId +
-				'.svg" alt="Monster picture">' + '</object>';
+			app.innerHTML +=
+				'<object id="' + monsterId +
+				'" class="grid" type="image/svg+xml" data="images/door.svg" alt="Monster picture"><img class="doorImage" src="images/door.svg" alt="Door to open"' +
+				'</object>';
+		}
+
+		/**
+		 * Render monster into the DOM
+		 * @param  {Object} monsterId The monster to render
+		 */
+		//Variable for the array of stories
+		var openDoor = function (monsterId) {
+			//Map array of Monster to an object element with grid classes
+			// app.innerHTML += '<object id="' + doorWay.value +
+			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
+			// 	'.svg" alt="Monster picture"><img src="images/door.svg" alt="Door to open"' + '</object>';
+			// Get the first element with the [data-snack] attribute
+			//var customerId = $(this).closest("object[data]").attr('data');
+			// console.log(doorWay);
+			var snack = doorWay.closest('[data="images/door.svg"]');
+			//console.log(snack);
 		}
 
 		/**
@@ -115,16 +137,29 @@
 			return array;
 		};
 
-		//Leave the original array but send to shuffle function
-		var monstersSlice = shuffle(monsters.slice());
-
 		/**
 		 * Get the monsterId for the monsters and send to the render function
 		 * @param  {Array} monsterSlice The monster chosen
 		 */
-		monstersSlice.forEach(function (monsterId) {
-			render(monsterId);
-		});
+		var monsterArray = function monsterArray() {
+			monsters.forEach(function (monsterId) {
+				gameStart(monsterId);
+			});
+		}
+
+
+		//Shuffle the array to initiate the game on page load
+		var monstersSlice = shuffle(monsters);
+		//Send the shuffled response to the render function
+		monsterArray(monstersSlice);
+
+		//document.addEventListener("click", openDoor);
+		doorWay.addEventListener("click", openDoor);
+
+		console.log(doorWay);
+	</script>
+	<script
+		src="https://polyfill.io/v3/polyfill.min.js?features=default%2CElement.prototype.matches%2CElement.prototype.closest">
 	</script>
 </body>
 
