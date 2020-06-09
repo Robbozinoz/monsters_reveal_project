@@ -33,15 +33,32 @@
 			height: auto;
 			max-width: 100%;
 		}
+
+		button {
+			width: 50%;
+			height: 3em;
+			border-radius: 4px;
+			border: 1px solid #000;
+		}
+
+		button:hover {
+			background-color: green;
+			color: white;
+		}
 	</style>
 </head>
 
 <body>
 
-	<h1>Monsters!</h1>
+	<h1>Monsters are Tricky</h1>
 
 	<!--Container for the MOnsters to live in-->
 	<div id="app" class="row">
+	</div>
+	<div class="row">
+		<div class="grid">
+			<button type="submit">Shuffle those Monsters</button>
+		</div>
 	</div>
 
 	<footer>
@@ -61,6 +78,9 @@
 	<script>
 		// Get the #app element
 		var app = document.querySelector('#app');
+
+		// Get the button element
+		var btn = document.querySelector('button');
 
 		// The monsters and socks
 		var monsters = [
@@ -97,11 +117,6 @@
 		 */
 		//Variable for the array of stories
 		var openDoor = function (e) {
-			//Map array of Monster to an object element with grid classes
-			// app.innerHTML += '<object id="' + doorWay.value +
-			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
-			// 	'.svg" alt="Monster picture"><img src="images/door.svg" alt="Door to open"' + '</object>';
-
 			// If NOT an image, do nothing
 			if (!event.target.matches("img")) return;
 
@@ -157,7 +172,12 @@
 		//Send the shuffled response to the render function
 		monsterArray(monstersSlice);
 
-		//Add an event listenetrto the HTM collection items.
+		btn.addEventListener('click', function (event) {
+			location.reload();
+			return false;
+		}, false);
+
+		//Add an event listener to the HTML collection items.
 		window.onload = function () {
 			//Take grid elements and place in an array
 			var doorWay = Array.prototype.slice.call(document.querySelectorAll(".grid"));
