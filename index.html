@@ -59,9 +59,8 @@
 	</footer>
 
 	<script>
-		var doorWay = document.getElementsByClassName("grid");
-		//var doorWay = document.getElementsByClassName("doorImage");
-		//var doorWay = document.querySelectorAll(".grid");
+		//var doorWay = document.getElementsByClassName("grid");
+
 
 		// Get the #app element
 		var app = document.querySelector('#app');
@@ -156,11 +155,12 @@
 
 		//Add an event listenet to the HTM collection items.
 		window.onload = function () {
+			var doorWay = document.querySelectorAll(".grid");
+			console.log(doorWay);
 			for (var i = 0; i < doorWay.length; i++) {
 				doorWay[i].addEventListener('click', openDoor, false);
 			}
 		}
-		//console.log(doorWay);
 	</script>
 	<script
 		src="https://polyfill.io/v3/polyfill.min.js?features=default%2CElement.prototype.matches%2CElement.prototype.closest">
