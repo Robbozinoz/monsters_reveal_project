@@ -91,7 +91,7 @@
 			//Map array of Monster to an object element with grid classes
 			app.innerHTML +=
 				'<object id="' + monsterId +
-				'" class="grid" type="image/svg+xml" data="images/door.svg" alt="Monster picture"><img class="doorImage" src="images/door.svg" alt="Door to open"' +
+				'" class="grid" type="image/svg+xml" data="images/doors.svg" alt="Monster picture"><img class="doorImage" src="images/door.svg" alt="Door to open"' +
 				'</object>';
 		}
 
@@ -108,8 +108,8 @@
 			// Get the first element with the [data-snack] attribute
 			//var customerId = $(this).closest("object[data]").attr('data');
 			// console.log(doorWay);
-			var snack = doorWay.closest('[data="images/door.svg"]');
-			//console.log(snack);
+			var showMonster = doorWay.closest('[data="images/door.svg"]');
+			console.log(showMonster);
 		}
 
 		/**
@@ -155,12 +155,12 @@
 		monsterArray(monstersSlice);
 
 		//Add an event listenet to the HTM collection items.
-		window.onload = function () {
+		window.onload = function (monsterId) {
 			for (var i = 0; i < doorWay.length; i++) {
 				doorWay[i].addEventListener('click', openDoor, false);
 			}
 		}
-		console.log(doorWay);
+		//console.log(doorWay);
 	</script>
 	<script
 		src="https://polyfill.io/v3/polyfill.min.js?features=default%2CElement.prototype.matches%2CElement.prototype.closest">
