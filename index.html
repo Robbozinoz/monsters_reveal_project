@@ -87,8 +87,8 @@
 			//Map array of Monster to an object element with grid classes
 			app.innerHTML +=
 				'<object id="' + monsterId +
-				'" class="grid" type="image/svg+xml" data="images/doors.svg" alt="Monster picture"><img class="doorImage" src="images/door.svg" alt="Door to open"' +
-				'</object>';
+				'" class="grid" type="image/svg+xml" data="images/doors.svg" alt="Monster picture"><img class="' +
+				monsterId + '" src="door.svg" alt="Door to open"></object>';
 		}
 
 		/**
@@ -104,8 +104,19 @@
 
 			//Identify the grid class object
 
-			//var showMonster = e.closest('object');
-			console.log(e);
+
+			// If NOT an image, do nothing
+			if (!event.target.matches("img")) return;
+
+			var newImage = event.target.getAttribute("class") + '.svg';
+			console.log(newImage);
+
+			event.target.setAttribute("src", newImage);
+
+			//var showMonster = e.closest('.grid');
+			//console.log(e);
+			//console.log(showMonster);
+
 		}
 
 		/**
@@ -156,7 +167,7 @@
 
 			//Loop through array to add event listener
 			for (var i = 0; i < doorWay.length; i++) {
-				doorWay[i].addEventListener('click', openDoor(), false);
+				doorWay[i].addEventListener('click', openDoor, false);
 			}
 		}
 	</script>
