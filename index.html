@@ -59,9 +59,6 @@
 	</footer>
 
 	<script>
-		//var doorWay = document.getElementsByClassName("grid");
-
-
 		// Get the #app element
 		var app = document.querySelector('#app');
 
@@ -99,7 +96,7 @@
 		 * @param  {Object} monsterId The monster to render
 		 */
 		//Variable for the array of stories
-		var openDoor = function (monsterId) {
+		var openDoor = function (e) {
 			//Map array of Monster to an object element with grid classes
 			// app.innerHTML += '<object id="' + doorWay.value +
 			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
@@ -107,8 +104,10 @@
 			// Get the first element with the [data-snack] attribute
 			//var customerId = $(this).closest("object[data]").attr('data');
 			// console.log(doorWay);
-			var showMonster = doorWay.closest('[data="images/door.svg"]');
-			console.log(showMonster);
+			//Identify the grid class object
+			var clickMonster = e.target;
+			//var showMonster = clickMonster.closest('[data="images/door.svg"]');
+			console.log(clickMonster);
 		}
 
 		/**
@@ -147,18 +146,17 @@
 			});
 		}
 
-
 		//Shuffle the array to initiate the game on page load
 		var monstersSlice = shuffle(monsters);
 		//Send the shuffled response to the render function
 		monsterArray(monstersSlice);
 
-		//Add an event listenet to the HTM collection items.
+		//Add an event listenetrto the HTM collection items.
 		window.onload = function () {
-			var doorWay = document.querySelectorAll(".grid");
+			var doorWay = Array.prototype.slice.call(document.querySelectorAll(".grid"));
 			console.log(doorWay);
 			for (var i = 0; i < doorWay.length; i++) {
-				doorWay[i].addEventListener('click', openDoor, false);
+				doorWay[i].addEventListener('click', openDoor(), false);
 			}
 		}
 	</script>
