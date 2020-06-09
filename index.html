@@ -61,6 +61,7 @@
 	<script>
 		var doorWay = document.getElementsByClassName("grid");
 		//var doorWay = document.getElementsByClassName("doorImage");
+		//var doorWay = document.querySelectorAll(".grid");
 
 		// Get the #app element
 		var app = document.querySelector('#app');
@@ -153,9 +154,12 @@
 		//Send the shuffled response to the render function
 		monsterArray(monstersSlice);
 
-		//document.addEventListener("click", openDoor);
-		doorWay.addEventListener("click", openDoor);
-
+		//Add an event listenet to the HTM collection items.
+		window.onload = function () {
+			for (var i = 0; i < doorWay.length; i++) {
+				doorWay[i].addEventListener('click', openDoor, false);
+			}
+		}
 		console.log(doorWay);
 	</script>
 	<script
