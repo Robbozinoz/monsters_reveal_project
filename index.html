@@ -96,7 +96,7 @@
 		 * @param  {Object} monsterId The monster to render
 		 */
 		//Variable for the array of stories
-		var openDoor = function (e) {
+		var openDoor = function () {
 			//Map array of Monster to an object element with grid classes
 			// app.innerHTML += '<object id="' + doorWay.value +
 			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
@@ -105,9 +105,9 @@
 			//var customerId = $(this).closest("object[data]").attr('data');
 			// console.log(doorWay);
 			//Identify the grid class object
-			var clickMonster = e.target;
-			//var showMonster = clickMonster.closest('[data="images/door.svg"]');
-			console.log(clickMonster);
+			//var clickMonster = e.target;
+			var showMonster = e.closest('object');
+			console.log(e);
 		}
 
 		/**
@@ -153,8 +153,10 @@
 
 		//Add an event listenetrto the HTM collection items.
 		window.onload = function () {
+			//Take grid elements and place in an array
 			var doorWay = Array.prototype.slice.call(document.querySelectorAll(".grid"));
-			console.log(doorWay);
+
+			//Loop through array to add event listener
 			for (var i = 0; i < doorWay.length; i++) {
 				doorWay[i].addEventListener('click', openDoor(), false);
 			}
