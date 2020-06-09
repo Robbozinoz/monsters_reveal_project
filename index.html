@@ -102,21 +102,18 @@
 			// 	'" class="grid" type="image/svg+xml" data="images/' + doorWay.value +
 			// 	'.svg" alt="Monster picture"><img src="images/door.svg" alt="Door to open"' + '</object>';
 
-			//Identify the grid class object
-
-
 			// If NOT an image, do nothing
 			if (!event.target.matches("img")) return;
 
+			//If an image get current class
 			var newImage = event.target.getAttribute("class") + '.svg';
-			console.log(newImage);
 
-			event.target.setAttribute("src", newImage);
+			//Create variable for event target
+			var monsterEvent = event.target
 
-			//var showMonster = e.closest('.grid');
-			//console.log(e);
-			//console.log(showMonster);
-
+			//Find object closet to img and set data to over ride the door
+			var showMonster = monsterEvent.closest('.grid');
+			showMonster.setAttribute("data", newImage);
 		}
 
 		/**
